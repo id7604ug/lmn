@@ -3,7 +3,7 @@ venv/
 __pycache__
 LMNOPsite/lmn/__pycache__/
 *.sqlite3
-
+.idea/
 
 # geckdriver executable file and logs
 
