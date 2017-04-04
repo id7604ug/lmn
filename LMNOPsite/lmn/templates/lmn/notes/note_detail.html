@@ -1,10 +1,9 @@
 {% extends 'lmn/base.html' %}
 {% block content %}
 
-
-<h2 id="note_page_title">{{ note.show.artist.name }} at {{ note.show.venue.name }} by <a href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ user.username }}</a></h2>
-
+<h2 id="note_page_title">{{ note.show.artist.name }} at {{ note.show.venue.name }} by <a href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ user.username }}</a>
+<a id="note_edit" href="{% url 'lmn:note_edit' note_pk=note.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></h2>
 <p id="note_title"><b>{{ note.title}}</b></p>
-<p id="note_text">{{ note.text }}</b>
+<p id="note_text">{{ note.text }}</p>
 
 {% endblock %}
