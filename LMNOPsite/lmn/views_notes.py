@@ -67,7 +67,7 @@ def note_edit(request, note_pk):
             if note.title and note.text:
                 note.posted_date = timezone.now()
                 note.save()
-                return redirect('lmn:note_detail', note_pk=note.pk)
+                return redirect('lmn:note_detail', pk=note.pk)
     else:
         form = NoteForm(instance=note)
 
