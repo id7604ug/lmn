@@ -1,5 +1,5 @@
-body {
-  font-family: monospace;
+#bootstrap-override body {
+  margin-right: 10px !important;
 }
 
 #welcome_user_msg, #login_or_sign_up {
