@@ -11,3 +11,8 @@ executables
 geckodriver
 geckodriver.log
 LMNOPsite/geckodriver.log
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
