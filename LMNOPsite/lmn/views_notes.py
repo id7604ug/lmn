@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Venue, Artist, Note, Show
-from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
+from .forms import VenueSearchForm, NoteForm, ArtistSearchForm, UserRegistrationForm
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -17,7 +17,7 @@ def new_note(request, show_pk):
 
     if request.method == 'POST':
 
-        form = NewNoteForm(request.POST)
+        form = NoteForm(request.POST)
         if form.is_valid():
 
             note = form.save(commit=False)
@@ -29,7 +29,7 @@ def new_note(request, show_pk):
                 return redirect('lmn:note_detail', note_pk=note.pk)
 
     else:
-        form = NewNoteForm()
+        form = NoteForm()
 
     return render(request, 'lmn/notes/new_note.html', {'form': form, 'show': show})
 
@@ -60,16 +60,15 @@ def note_edit(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk)
     if request.method == 'POST':
 
-        form = NewNoteForm(request.POST, instance=note)
+        form = NoteForm(request.POST, instance=note)
         if form.is_valid():
 
             note = form.save(commit=False)
             if note.title and note.text:
-
                 note.posted_date = timezone.now()
                 note.save()
                 return redirect('lmn:note_detail', note_pk=note.pk)
     else:
-        form = NewNoteForm(instance=note)
+        form = NoteForm(instance=note)
 
     return render(request, 'lmn/notes/new_note.html', {'form': form, 'show': note.show})
