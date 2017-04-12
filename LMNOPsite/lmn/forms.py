@@ -21,6 +21,13 @@ class NoteForm(forms.ModelForm):
         fields = ('title', 'text')
 
 
+class DeleteNoteForm(forms.ModelForm):
+
+    class Meta:
+        model = Note
+        fields = ()
+
+
 class UserRegistrationForm(UserCreationForm):
 
     class Meta:
