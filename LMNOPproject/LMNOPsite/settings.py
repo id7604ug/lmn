@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'LMNOPproject.lmn',
-    'lmn.apps.LMN'
+    'lmn.apps.LmnConfig'
 ]
 
 MIDDLEWARE_CLASSES = [
