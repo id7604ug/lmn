@@ -1,35 +1,40 @@
 {% load staticfiles %}
 <html>
-<head>
-  <title>LMNOP</title>
-    <script src="{% static 'jquery-3.2.0.min.js' %}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+  <head>
+    <title>LMNOP</title>
+      <script src="{% static 'jquery-3.2.0.min.js' %}"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
 
-<body id="bootstrap-override">
+  <body id="bootstrap-override">
 
-<h1>LMN</h1>
+    <div class="jumbotron">
+      <h1>Live Music Notes, Opinions and Pictures</h1>
+    </div>
 
+    <div class="topmenu">
+      <ul class="nav nav-tabs">
+        <li><a href="{% url 'lmn:venue_list' %}">Venues</a></li>
+        <li><a href="{% url 'lmn:artist_list' %}">Artists</a></li>
+        <li><a href="{% url 'lmn:latest_notes' %}">Notes</a></li>
+        {% if user.is_authenticated %}
+          <span id='welcome_user_msg'>You are logged in, <a href="{% url 'lmn:user_profile' user_pk=user.pk %}">{{ user.username }}</a>.  <a href="{% url 'logout' %}">Logout</a></span>
 
-<a href="{% url 'lmn:venue_list' %}">Venues</a>
-<a href="{% url 'lmn:artist_list' %}">Artists</a>
-<a href="{% url 'lmn:latest_notes' %}">Notes</a>
+        {% else %}
 
-{% if user.is_authenticated %}
-  <span id='welcome_user_msg'>You are logged in, <a href="{% url 'lmn:user_profile' user_pk=user.pk %}">{{ user.username }}</a>.  <a href="{% url 'logout' %}">Logout</a></span>
+          <span id='login_or_sign_up'><a href="{% url 'login' %}?next={{ request.path }}">Login or sign up</a></span>
 
-{% else %}
+        {% endif %}
+      </ul>
 
-  <span id='login_or_sign_up'><a href="{% url 'login' %}?next={{ request.path }}">Login or sign up</a></span>
+    </div>
+    <br>
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
 
-{% endif %}
-
-<hr>
-
-{% block content %}
-{% endblock %}
-
-</body>
+  </body>
 </html>
