@@ -1,76 +1,3 @@
-2017-04-13T19:40:51.769851+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
-2017-04-13T19:40:51.769852+00:00 app[web.1]:     worker.init_process()
-2017-04-13T19:40:51.769852+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 122, in init_process
-2017-04-13T19:40:51.769853+00:00 app[web.1]:     self.load_wsgi()
-2017-04-13T19:40:51.769854+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
-2017-04-13T19:40:51.769854+00:00 app[web.1]:     self.wsgi = self.app.wsgi()
-2017-04-13T19:40:51.769855+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
-2017-04-13T19:40:51.769856+00:00 app[web.1]:     self.callable = self.load()
-2017-04-13T19:40:51.769856+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
-2017-04-13T19:40:51.769857+00:00 app[web.1]:     return self.load_wsgiapp()
-2017-04-13T19:40:51.769857+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
-2017-04-13T19:40:51.769858+00:00 app[web.1]:     return util.import_app(self.app_uri)
-2017-04-13T19:40:51.769859+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/util.py", line 357, in import_app
-2017-04-13T19:40:51.769860+00:00 app[web.1]:     __import__(module)
-2017-04-13T19:40:51.769860+00:00 app[web.1]: ModuleNotFoundError: No module named 'LMNOPsite/wsgi'
-2017-04-13T19:40:51.769977+00:00 app[web.1]: [2017-04-13 19:40:51 +0000] [8] [INFO] Worker exiting (pid: 8)
-2017-04-13T19:40:51.796898+00:00 app[web.1]: [2017-04-13 19:40:51 +0000] [4] [INFO] Shutting down: Master
-2017-04-13T19:40:51.797004+00:00 app[web.1]: [2017-04-13 19:40:51 +0000] [4] [INFO] Reason: Worker failed to boot.
-2017-04-13T19:40:51.897053+00:00 heroku[web.1]: State changed from starting to crashed
-2017-04-13T19:40:51.898562+00:00 heroku[web.1]: State changed from crashed to starting
-2017-04-13T19:40:51.882739+00:00 heroku[web.1]: Process exited with status 3
-2017-04-13T19:40:56.752790+00:00 heroku[web.1]: Starting process with command `gunicorn LMNOPsite/wsgi.py --log-file -`
-2017-04-13T19:40:59.247550+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [4] [INFO] Starting gunicorn 19.4.5
-2017-04-13T19:40:59.248402+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [4] [INFO] Listening at: http://0.0.0.0:15387 (4)
-2017-04-13T19:40:59.248457+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [4] [INFO] Using worker: sync
-2017-04-13T19:40:59.259655+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [8] [ERROR] Exception in worker process:
-2017-04-13T19:40:59.255204+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [8] [INFO] Booting worker with pid: 8
-2017-04-13T19:40:59.259657+00:00 app[web.1]: Traceback (most recent call last):
-2017-04-13T19:40:59.259658+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
-2017-04-13T19:40:59.259658+00:00 app[web.1]:     worker.init_process()
-2017-04-13T19:40:59.259659+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 122, in init_process
-2017-04-13T19:40:59.259659+00:00 app[web.1]:     self.load_wsgi()
-2017-04-13T19:40:59.259660+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
-2017-04-13T19:40:59.259660+00:00 app[web.1]:     self.wsgi = self.app.wsgi()
-2017-04-13T19:40:59.259661+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
-2017-04-13T19:40:59.259661+00:00 app[web.1]:     self.callable = self.load()
-2017-04-13T19:40:59.259662+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
-2017-04-13T19:40:59.259662+00:00 app[web.1]:     return self.load_wsgiapp()
-2017-04-13T19:40:59.259662+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
-2017-04-13T19:40:59.259663+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/util.py", line 357, in import_app
-2017-04-13T19:40:59.259664+00:00 app[web.1]:     __import__(module)
-2017-04-13T19:40:59.259663+00:00 app[web.1]:     return util.import_app(self.app_uri)
-2017-04-13T19:40:59.259664+00:00 app[web.1]: ModuleNotFoundError: No module named 'LMNOPsite/wsgi'
-2017-04-13T19:40:59.259664+00:00 app[web.1]: Traceback (most recent call last):
-2017-04-13T19:40:59.259665+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
-2017-04-13T19:40:59.259665+00:00 app[web.1]:     worker.init_process()
-2017-04-13T19:40:59.259665+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 122, in init_process
-2017-04-13T19:40:59.259666+00:00 app[web.1]:     self.load_wsgi()
-2017-04-13T19:40:59.259666+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
-2017-04-13T19:40:59.259666+00:00 app[web.1]:     self.wsgi = self.app.wsgi()
-2017-04-13T19:40:59.259667+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
-2017-04-13T19:40:59.259667+00:00 app[web.1]:     self.callable = self.load()
-2017-04-13T19:40:59.259667+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
-2017-04-13T19:40:59.259668+00:00 app[web.1]:     return self.load_wsgiapp()
-2017-04-13T19:40:59.259668+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
-2017-04-13T19:40:59.259668+00:00 app[web.1]:     return util.import_app(self.app_uri)
-2017-04-13T19:40:59.259669+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/util.py", line 357, in import_app
-2017-04-13T19:40:59.259669+00:00 app[web.1]:     __import__(module)
-2017-04-13T19:40:59.259670+00:00 app[web.1]: ModuleNotFoundError: No module named 'LMNOPsite/wsgi'
-2017-04-13T19:40:59.259770+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [8] [INFO] Worker exiting (pid: 8)
-2017-04-13T19:40:59.266451+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [9] [INFO] Booting worker with pid: 9
-2017-04-13T19:40:59.271046+00:00 app[web.1]: [2017-04-13 19:40:59 +0000] [9] [ERROR] Exception in worker process:
-2017-04-13T19:40:59.271047+00:00 app[web.1]: Traceback (most recent call last):
-2017-04-13T19:40:59.271048+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
-2017-04-13T19:40:59.271049+00:00 app[web.1]:     worker.init_process()
-2017-04-13T19:40:59.271050+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 122, in init_process
-2017-04-13T19:40:59.271051+00:00 app[web.1]:     self.load_wsgi()
-2017-04-13T19:40:59.271051+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
-2017-04-13T19:40:59.271052+00:00 app[web.1]:     self.wsgi = self.app.wsgi()
-2017-04-13T19:40:59.271053+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
-2017-04-13T19:40:59.271053+00:00 app[web.1]:     self.callable = self.load()
-2017-04-13T19:40:59.271054+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
-2017-04-13T19:40:59.271054+00:00 app[web.1]:     return self.load_wsgiapp()
 2017-04-13T19:40:59.271055+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
 2017-04-13T19:40:59.271055+00:00 app[web.1]:     return util.import_app(self.app_uri)
 2017-04-13T19:40:59.271056+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/util.py", line 357, in import_app
@@ -99,3 +26,76 @@
 2017-04-13T19:40:59.495444+00:00 heroku[web.1]: State changed from starting to crashed
 2017-04-13T19:41:00.498481+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=powerful-refuge-24574.herokuapp.com request_id=46322128-1f4b-4fb2-91b8-a8be32728a79 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
 2017-04-13T19:41:01.083776+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=powerful-refuge-24574.herokuapp.com request_id=54084c87-1b1f-466a-983e-be93da12501b fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:43:33.000000+00:00 app[api]: Build started by user id7604ug@go.minneapolis.edu
+2017-04-13T19:43:57.372908+00:00 app[api]: Deploy f37d8f2 by user id7604ug@go.minneapolis.edu
+2017-04-13T19:43:57.372908+00:00 app[api]: Release v21 created by user id7604ug@go.minneapolis.edu
+2017-04-13T19:43:33.000000+00:00 app[api]: Build succeeded
+2017-04-13T19:43:58.648368+00:00 app[api]: Release v21 created by user id7604ug@go.minneapolis.edu
+2017-04-13T19:43:58.719721+00:00 heroku[web.1]: State changed from crashed to starting
+2017-04-13T19:44:03.348407+00:00 heroku[web.1]: Starting process with command `gunicorn LMNOPproject/wsgi.py --log-file -`
+2017-04-13T19:44:04.819746+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [4] [INFO] Starting gunicorn 19.4.5
+2017-04-13T19:44:04.820183+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [4] [INFO] Listening at: http://0.0.0.0:8229 (4)
+2017-04-13T19:44:04.820269+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [4] [INFO] Using worker: sync
+2017-04-13T19:44:04.823394+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [8] [INFO] Booting worker with pid: 8
+2017-04-13T19:44:04.826425+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [8] [ERROR] Exception in worker process:
+2017-04-13T19:44:04.826427+00:00 app[web.1]: Traceback (most recent call last):
+2017-04-13T19:44:04.826428+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+2017-04-13T19:44:04.826429+00:00 app[web.1]:     worker.init_process()
+2017-04-13T19:44:04.826430+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 122, in init_process
+2017-04-13T19:44:04.826431+00:00 app[web.1]:     self.load_wsgi()
+2017-04-13T19:44:04.826431+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+2017-04-13T19:44:04.826432+00:00 app[web.1]:     self.wsgi = self.app.wsgi()
+2017-04-13T19:44:04.826433+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2017-04-13T19:44:04.826433+00:00 app[web.1]:     self.callable = self.load()
+2017-04-13T19:44:04.826434+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+2017-04-13T19:44:04.826434+00:00 app[web.1]:     return self.load_wsgiapp()
+2017-04-13T19:44:04.826435+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+2017-04-13T19:44:04.826436+00:00 app[web.1]:     return util.import_app(self.app_uri)
+2017-04-13T19:44:04.826436+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/util.py", line 357, in import_app
+2017-04-13T19:44:04.826437+00:00 app[web.1]:     __import__(module)
+2017-04-13T19:44:04.826438+00:00 app[web.1]: ModuleNotFoundError: No module named 'LMNOPproject/wsgi'
+2017-04-13T19:44:04.826438+00:00 app[web.1]: Traceback (most recent call last):
+2017-04-13T19:44:04.826439+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+2017-04-13T19:44:04.826440+00:00 app[web.1]:     worker.init_process()
+2017-04-13T19:44:04.826440+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 122, in init_process
+2017-04-13T19:44:04.826441+00:00 app[web.1]:     self.load_wsgi()
+2017-04-13T19:44:04.826441+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+2017-04-13T19:44:04.826442+00:00 app[web.1]:     self.wsgi = self.app.wsgi()
+2017-04-13T19:44:04.826443+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2017-04-13T19:44:04.826443+00:00 app[web.1]:     self.callable = self.load()
+2017-04-13T19:44:04.826444+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+2017-04-13T19:44:04.826445+00:00 app[web.1]:     return self.load_wsgiapp()
+2017-04-13T19:44:04.826445+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+2017-04-13T19:44:04.826446+00:00 app[web.1]:     return util.import_app(self.app_uri)
+2017-04-13T19:44:04.826447+00:00 app[web.1]:   File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/util.py", line 357, in import_app
+2017-04-13T19:44:04.826447+00:00 app[web.1]:     __import__(module)
+2017-04-13T19:44:04.826448+00:00 app[web.1]: ModuleNotFoundError: No module named 'LMNOPproject/wsgi'
+2017-04-13T19:44:04.826554+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [8] [INFO] Worker exiting (pid: 8)
+2017-04-13T19:44:04.850393+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [4] [INFO] Shutting down: Master
+2017-04-13T19:44:04.850481+00:00 app[web.1]: [2017-04-13 19:44:04 +0000] [4] [INFO] Reason: Worker failed to boot.
+2017-04-13T19:44:04.956325+00:00 heroku[web.1]: State changed from starting to crashed
+2017-04-13T19:44:04.926655+00:00 heroku[web.1]: Process exited with status 3
+2017-04-13T19:44:08.277186+00:00 app[api]: Starting process with command `python LMNOPproject/manage.py migrate` by user id7604ug@go.minneapolis.edu
+2017-04-13T19:44:13.257822+00:00 heroku[run.1045]: State changed from starting to up
+2017-04-13T19:44:13.124659+00:00 heroku[run.1045]: Awaiting client
+2017-04-13T19:44:13.145999+00:00 heroku[run.1045]: Starting process with command `python LMNOPproject/manage.py migrate`
+2017-04-13T19:44:18.881648+00:00 heroku[run.1045]: State changed from up to complete
+2017-04-13T19:44:18.879955+00:00 heroku[run.1045]: Process exited with status 0
+2017-04-13T19:44:41.010791+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=powerful-refuge-24574.herokuapp.com request_id=17b66f5a-6de8-4fba-b646-d5010024c798 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:44:41.421596+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=powerful-refuge-24574.herokuapp.com request_id=e907391e-b89a-4521-8e13-5f2bcfd36457 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:44:42.648067+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=powerful-refuge-24574.herokuapp.com request_id=45f6825e-032d-491f-9438-ebb6ffa2da1c fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:44:43.013390+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=powerful-refuge-24574.herokuapp.com request_id=e7a76308-0b80-4e21-88dd-5c01742663b0 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:44:57.353537+00:00 app[api]: Starting process with command `python LMNOPproject/manage.py makemigrations` by user id7604ug@go.minneapolis.edu
+2017-04-13T19:45:02.579786+00:00 heroku[run.4038]: Awaiting client
+2017-04-13T19:45:02.642902+00:00 heroku[run.4038]: Starting process with command `python LMNOPproject/manage.py makemigrations`
+2017-04-13T19:45:02.798500+00:00 heroku[run.4038]: State changed from starting to up
+2017-04-13T19:45:08.631805+00:00 heroku[run.4038]: State changed from up to complete
+2017-04-13T19:45:08.621372+00:00 heroku[run.4038]: Process exited with status 0
+2017-04-13T19:45:14.780064+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=powerful-refuge-24574.herokuapp.com request_id=af0396b3-f89a-48c5-a426-8991e9033426 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:45:15.178881+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=powerful-refuge-24574.herokuapp.com request_id=0739e749-564d-42a4-93a3-9c4d6c64c1d6 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:46:20.210004+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=powerful-refuge-24574.herokuapp.com request_id=dcfb035c-da79-4393-b977-1dbbf3aee1d9 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:46:20.618085+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=powerful-refuge-24574.herokuapp.com request_id=f2885f20-fbde-4bbc-9ae7-f924644728b7 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:47:09.104679+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=powerful-refuge-24574.herokuapp.com request_id=c51c9c5b-204a-4123-a175-1327d85389ce fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:47:09.523881+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=powerful-refuge-24574.herokuapp.com request_id=24511e18-8e5c-4e21-98ce-13f71bf0fa88 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:48:33.093434+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=powerful-refuge-24574.herokuapp.com request_id=13448d7d-3429-49b1-a17a-cdde52730d17 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
+2017-04-13T19:48:33.437806+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=powerful-refuge-24574.herokuapp.com request_id=f00347ed-6c94-454e-9cb5-f682f308f0a2 fwd="134.29.246.245" dyno= connect= service= status=503 bytes= protocol=https
