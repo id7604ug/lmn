@@ -56,7 +56,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'LMNOPsite.urls'
+ROOT_URLCONF = 'LMNOPproject.LMNOPsite.urls'
 
 TEMPLATES = [
     {
