@@ -17,6 +17,8 @@ import dj_database_url
 import sys
 sys.path.append('..')  ## This is needed to be able to run python manage.py
 
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -135,3 +137,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Should provide the user object.
 LOGIN_REDIRECT_URL = 'lmn:my_user_profile'
 LOGOUT_REDIRECT_URL = 'lmn:homepage'
+
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
