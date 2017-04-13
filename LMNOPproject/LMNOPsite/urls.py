@@ -28,6 +28,6 @@ urlpatterns = [
     url(r'^accounts/logout/$', auth_views.logout, name='logout'),
     url(r'^register/$', views_users.register, name='register'),
 
-    url(r'^', include('lmn.urls') ),
+    url(r'^', include('LMNOPproject.lmn.urls') ),
 
 ]
