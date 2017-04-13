@@ -1,1 +1,1 @@
-web: gunicorn LMNOPproject/wsgi.py --log-file -
+web: gunicorn LMNOPproject.LMNOPsite.wsgi --log-file -
