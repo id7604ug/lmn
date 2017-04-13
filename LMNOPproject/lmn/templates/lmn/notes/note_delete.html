@@ -1,0 +1,9 @@
+{% extends 'lmn/base.html' %}
+{% block content %}
+
+<h2>Are you sure you want to delete note {{ note.title }}?</h2>
+<h3>Press the back button to cancel, or the Agree button to proceed.</h3>
+<form method="POST" action="{% url 'lmn:note_delete' note_pk=note.pk %}">{% csrf_token %}
+    <button type="submit" class="btn btn-danger">Agree</button>
+</form>
+{% endblock %}

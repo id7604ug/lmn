@@ -14,10 +14,18 @@ class ArtistSearchForm(forms.Form):
     search_name = forms.CharField(label='Artist Name', max_length=200)
 
 
-class NewNoteForm(forms.ModelForm):
+class NoteForm(forms.ModelForm):
+
     class Meta:
         model = Note
         fields = ('title', 'text')
+
+
+class DeleteNoteForm(forms.ModelForm):
+
+    class Meta:
+        model = Note
+        fields = ()
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -25,7 +33,6 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
-
 
     def clean_username(self):
 
@@ -39,7 +46,6 @@ class UserRegistrationForm(UserCreationForm):
 
         return username
 
-
     def clean_first_name(self):
         first_name = self.cleaned_data['first_name']
         if not first_name:
@@ -47,14 +53,12 @@ class UserRegistrationForm(UserCreationForm):
 
         return first_name
 
-
     def clean_last_name(self):
         last_name = self.cleaned_data['last_name']
         if not last_name:
             raise ValidationError('Please enter your last name')
 
         return last_name
-
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -65,7 +69,6 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError('A user with that email address already exists')
 
         return email
-
 
     def save(self, commit=True):
         user = super(UserRegistrationForm, self).save(commit=False)

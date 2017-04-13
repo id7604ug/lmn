@@ -18,7 +18,7 @@ User._meta.get_field('first_name')._blank = False
 
 ''' A music artist '''
 class Artist(models.Model):
-    name = models.CharField(max_length=200, blank=False);
+    name = models.CharField(max_length=200, blank=False)
 
     def __str__(self):
         return "Artist: " + self.name

@@ -4,6 +4,10 @@ psycopg2==2.6.2
 pytz==2016.10
 selenium==3.0.2
 wheel==0.24.0
+<<<<<<< HEAD
 dj-database-url==0.4.0
 gunicorn==19.4.5
 whitenoise==2.0.6
+=======
+gunicorn==19.7.1
+>>>>>>> 7615c9fe1d23d8a46c305e4037c337e8349ff3f7

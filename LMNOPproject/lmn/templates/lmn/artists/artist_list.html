@@ -22,7 +22,7 @@
 <div class="artist" id="artist_{{ artist.pk }}">
 <P><a href="{% url 'lmn:artist_detail' artist_pk=artist.pk %}">{{ artist.name }}</a></p>
   <p>See venues played, notes, and add your own <a href="{% url 'lmn:venues_for_artist' artist_pk=artist.pk %}">{{ artist.name }} notes</a>
-<div>
+</div>
 
 {% empty %}
 <P>No artists found</P>
