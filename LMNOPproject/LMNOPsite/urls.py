@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
-from lmn import views, views_users
+from LMNOPproject.lmn import views, views_users
 
 
 urlpatterns = [
