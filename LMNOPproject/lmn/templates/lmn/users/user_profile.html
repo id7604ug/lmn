@@ -9,6 +9,17 @@ Text truncated to 200 characters. -->
 
 <h2 id='username_notes'>{{ user.username }}'s notes</h2>
 
+
+<div>
+<P>Note Search</P>
+<form action="{% url 'lmn:venue_list' %}">
+  {{ form }}
+  <input type='submit' value='Search'/>
+</form>
+</div>
+
+
+
 {% for note in notes %}
 
 <div class='note' id="note_{{ note.pk }}">

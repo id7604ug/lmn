@@ -77,7 +77,7 @@ def note_edit(request, note_pk):
     return render(request, 'lmn/notes/note_edit.html', {'form': form, 'note': note, 'show': show})
 
 
-@login_required()
+@login_required
 # TODO user validation
 def note_delete(request, note_pk):
 
