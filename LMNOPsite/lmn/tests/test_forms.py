@@ -9,27 +9,27 @@ import string
 class NoteFormTests(TestCase):
 
     def test_missing_title_is_invalid(self):
-        form_data = { "text": "blah blah"};
+        form_data = { "text": "blah blah"}
         form = NoteForm(form_data)
         self.assertFalse(form.is_valid())
 
         invalid_titles = list(string.whitespace) + ['   ', '\n\n\n', '\t\t\n\t']
 
         for invalid_title in invalid_titles:
-            form_data = { "title" : invalid_title , "text": "blah blah"};
+            form_data = { "title" : invalid_title , "text": "blah blah"}
             form = NoteForm(form_data)
             self.assertFalse(form.is_valid())
 
 
     def test_missing_text_is_invalid(self):
-        form_data = { "title" : "blah blah" };
+        form_data = { "title" : "blah blah" }
         form = NoteForm(form_data)
         self.assertFalse(form.is_valid())
 
         invalid_texts = list(string.whitespace) + ['   ', '\n\n\n', '\t\t\n\t']
 
         for invalid_text in invalid_texts:
-            form_data = { "title": "blah blah", "text" : invalid_text};
+            form_data = { "title": "blah blah", "text" : invalid_text}
             form = NoteForm(form_data)
             self.assertFalse(form.is_valid())
 

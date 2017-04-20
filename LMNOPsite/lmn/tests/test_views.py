@@ -336,7 +336,6 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
         initial_note_count = Note.objects.count()
 
         new_note_url = reverse('lmn:new_note', kwargs={'show_pk': 1})
-
         response = self.client.post(new_note_url, {'text': 'ok', 'title': 'blah blah'}, follow=True)
 
         # Verify note is in database
@@ -349,7 +348,8 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
         # Date correct?
         now = datetime.datetime.today()
         posted_date = new_note_query.first().posted_date
-        self.assertEqual(now.date(), posted_date.date())  # TODO check time too
+        self.assertEqual(now.date(), posted_date.date())    # FIXME
+        self.assertEqual(now.time(), posted_date.time())
 
     def test_redirect_to_note_detail_after_save(self):
 
@@ -365,35 +365,79 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
 class TestDeleteNote(TestCase):
     fixtures = ['testing_users', 'testing_artists', 'testing_shows', 'testing_venues', 'testing_notes']
 
-    # TODO
+    def setUp(self):
+        user = User.objects.first()
+        self.client.force_login(user)
+
     def test_delete_note_database_updated_correctly(self):
+        note_count = Note.objects.count()
 
-        initial_note_count = Note.objects.count()
+        # Delete note
+        new_note = Note.objects.filter(pk=1).first()
+        delete_note_url = reverse('lmn:note_delete', kwargs={'note_pk': 1})
+        response = self.client.post(delete_note_url, {'note_pk': 1}, follow=True)
 
-        new_note_url = reverse('lmn:new_note', kwargs={'show_pk': 1})
-        new_note = Note.objects.filter(text='ok', title='blah blah').first()
+        # One less note in database (no other notes deleted)
+        self.assertEqual(Note.objects.count(), note_count - 1)
 
-        response = self.client.post(new_note_url, {'text': 'ok', 'title': 'blah blah'}, follow=True)
+    def test_redirect_to_user_profile_after_delete(self):
+        # Need a user to reference their profile
+        user = User.objects.first()
+        self.client.force_login(user)
 
-        # Create note in database so we can delete it
-        new_note_query = Note.objects.filter(text='ok', title='blah blah')
+        # Delete note
+        delete_note_url = reverse('lmn:note_delete', kwargs={'note_pk': 1})
+        response = self.client.post(delete_note_url, {'note_pk': 1}, follow=True)
 
-        # Verify note no longer in database
-        delete_note_url = reverse('lmn:delete_note', kwargs={'note_pk': new_note.pk})
-        response = self.client.post(delete_note_url, {}, follow=True)
+        self.assertRedirects(response, reverse('lmn:user_profile', kwargs={'user_pk': user.pk}))
 
-        # Finally, one less note in database (no other notes deleted)
-        self.assertEqual(Note.objects.count(), initial_note_count - 1)
+    def test_delete_non_existant_note_is_error(self):
+        delete_note_url = reverse('lmn:note_delete', kwargs={'note_pk': 12345})
+        response = self.client.post(delete_note_url)
+        self.assertEqual(response.status_code, 404)
 
-    # def test_redirect_to_user_profile_after_delete(self):
-    #     # TODO
-    #
-    # def test_delete_non_existant_note_is_error(self):
-    #     # TODO
-    #
 
-# class TestEditNote(TestCase):
-#     fixtures = ['testing_users', 'testing_artists', 'testing_shows', 'testing_venues', 'testing_notes']
+class TestEditNote(TestCase):
+    fixtures = ['testing_users', 'testing_artists', 'testing_shows', 'testing_venues', 'testing_notes']
+
+    def setUp(self):
+        user = User.objects.first()
+        self.client.force_login(user)
+
+    # TODO
+    def test_edit_note_database_updated_correctly(self):
+        response = self.client.get(reverse('lmn:note_list'), kwargs={'show_pk': 1})
+
+    def test_redirect_to_note_detail_after_edit(self):
+        edit_note_url = reverse('lmn:note_edit', kwargs={'note_pk': 1})
+        response = self.client.post(edit_note_url, {'text': 'my old friend', 'title': 'hello darkness'}, follow=True)
+
+        self.assertRedirects(response, reverse('lmn:note_detail', kwargs={'note_pk': 1}))
+
+    def test_can_edit_note_for_show_blank_data_is_error(self):
+
+        edit_note_url = reverse('lmn:note_edit', kwargs={'note_pk': 1})
+
+        # No post params
+        response = self.client.post(edit_note_url, follow=True)
+
+        # No note saved, should show same page
+        self.assertTemplateUsed('lmn/notes/note_edit.html')
+
+        # No title
+        response = self.client.post(edit_note_url, {'text': 'blah blah'}, follow=True)
+        self.assertTemplateUsed('lmn/notes/note_edit.html')
+
+        # No text
+        response = self.client.post(edit_note_url, {'title': 'blah blah'}, follow=True)
+        self.assertTemplateUsed('lmn/notes/note_edit.html')
+
+        # TODO assert no changes
+
+    def test_update_non_existant_note_is_error(self):
+        edit_note_url = reverse('lmn:note_edit', kwargs={'note_pk': 12345})
+        response = self.client.post(edit_note_url)
+        self.assertEqual(response.status_code, 404)
 
 
 class TestUserProfile(TestCase):
@@ -435,7 +479,6 @@ class TestNotes(TestCase):
         self.assertEqual(first.pk, 3)
         self.assertEqual(second.pk, 2)
         self.assertEqual(third.pk, 1)
-
 
     def test_notes_for_show_view(self):
         # Verify correct list of notes shown for a Show, most recent first
