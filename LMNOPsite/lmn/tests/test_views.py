@@ -405,8 +405,8 @@ class TestEditNote(TestCase):
         self.client.force_login(user)
 
     # TODO
-    def test_edit_note_database_updated_correctly(self):
-        response = self.client.get(reverse('lmn:note_list'), kwargs={'show_pk': 1})
+    # def test_edit_note_database_updated_correctly(self):
+    #     response = self.client.get(reverse('lmn:note_list'), kwargs={{'show': show, 'notes': notes}})
 
     def test_redirect_to_note_detail_after_edit(self):
         edit_note_url = reverse('lmn:note_edit', kwargs={'note_pk': 1})
